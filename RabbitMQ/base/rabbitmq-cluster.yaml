@@ -1,0 +1,42 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rsp
+spec:
+  image: artifactory.nreca.org/docker/cmsupport/linux/rabbitmq-management:3.8.7.20200904
+  replicas: 3
+  persistence:
+    storageClassName: pure-block
+    storage: 15Gi
+  service:
+    type: NodePort    
+  rabbitmq:
+    additionalPlugins:
+      - rabbitmq_prometheus
+    additionalConfig: |
+      cluster_name = rsp-rabbit
+      load_definitions = /etc/rabbitmq/definitions.json 
+  override:
+    statefulSet:
+      spec:
+        template:
+          metadata:
+            annotations:
+              prometheus.io/scrape: 'true'
+              prometheus.io/port: '15692'
+          spec:
+            containers:
+              - name: rabbitmq
+                volumeMounts:
+                - mountPath: /etc/rabbitmq/definitions.json
+                  name: definitions
+                  subPath: definitions.json
+                ports:
+                - containerPort: 15692
+                  name: prometheus
+                  protocol: TCP
+            volumes:
+              - name: definitions
+                configMap:
+                  defaultMode: 420
+                  name: definitions

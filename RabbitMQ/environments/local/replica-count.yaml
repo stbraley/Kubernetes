@@ -1,0 +1,9 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rsp
+spec:
+  replicas: 1
+  persistence:
+    storageClassName: hostpath
+    storage: 100M

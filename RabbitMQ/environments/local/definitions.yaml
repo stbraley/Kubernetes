@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: definitions
+data:
+  definitions.json: |-
+    {
+        "users": [
+            {
+                "name": "admin",
+                "password_hash": "x0ZYkUSXKmadb+IWuVh3mRd9HQRELGbqrS5HxuZ2uTd9DH9G",
+                "hashing_algorithm": "rabbit_password_hashing_sha256",
+                "tags": "administrator"
+            },
+        ],
+        "vhosts": [
+            {
+                "name": "/"
+            },
+        ],
+        "permissions": [
+            {
+                "user": "admin",
+                "vhost": "/",
+                "configure": ".*",
+                "write": ".*",
+                "read": ".*"
+            },
+        ]
+    }    

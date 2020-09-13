@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    name: rabbit-management
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: rabbit.apps7-npr-cluster.nreca.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rsp-rabbitmq-client
+          servicePort: 15672
