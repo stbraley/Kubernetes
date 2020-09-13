@@ -53,30 +53,30 @@ Now that the VMware RabbitMQ Operator is running, we can use it to create a full
 1. Create a namespace for the rabbit cluster in Kubernetes.
 
     ```
-    c:\dev\CaaS-Deployment> kubectl create namespace rabbit
+    c:\dev\Kubernetes> kubectl create namespace rabbit
     ```
 2. Deploy the cluster into the namespace you created in step 1.
 
     ```
-    c:\dev\CaaS-Deployment> kubectl apply -k ./rabbit/environments/local -n rabbit
+    c:\dev\Kubernetes> kubectl apply -k ./RabbitMQ/environments/local -n rabbit
     ```
     
 
 Kubernetes is now downloading and creating the resources needed for your RabbitMQ Cluster. Verify that it is complete by running the following command and wait until you see 1/1 Running. CTRL + C will break out of the command.
 
 ```
-C:\dev\Caas-Deployment> while($(true){ clear; kubectl get pods -n rabbit; Start-Sleep -s 5;}
+C:\dev\Kubernetes> while($(true){ clear; kubectl get pods -n rabbit; Start-Sleep -s 5;}
 ```
 
 ## Post Deployment
 The RabbitMQ Operator creates a service resource used to connect to the RabbitMQ AMQP and management interface ports. Execute the following command to get the port numbers that its using. If you are deploying the local environment, the rsp-rabbitmq-client will have the port mappings.
 
 ```
-c:\dev\CaaS-Deployment> kubectl get services -n rabbit
+c:\dev\Kubernetes> kubectl get services -n rabbit
 ```
 
 ![Summary](./docs/images/rabbit-service.png)
 
-In the above instance, the RabbitMQ management interface will be available at http://localhost:31654 and the RabbitMQ AMQP host and port is localhost 32019. The username and password is admin.
+In the above instance, the RabbitMQ management interface will be available at http://localhost:31524 and the RabbitMQ AMQP host and port is localhost 30725. The username and password is admin.
 
     
