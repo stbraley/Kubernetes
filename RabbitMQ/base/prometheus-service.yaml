@@ -3,9 +3,9 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/component: rabbitmq
-    app.kubernetes.io/name: rsp
+    app.kubernetes.io/name: myrabbit
     app.kubernetes.io/part-of: rabbitmq
-  name: rsp-rabbitmq-prometheus-headless
+  name: rabbitmq-prometheus-headless
 spec:
   clusterIP: None
   ports:

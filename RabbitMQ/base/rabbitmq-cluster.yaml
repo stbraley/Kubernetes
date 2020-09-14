@@ -13,7 +13,7 @@ spec:
     additionalPlugins:
       - rabbitmq_prometheus
     additionalConfig: |
-      cluster_name = rsp-rabbit
+      cluster_name = my-rabbit
       load_definitions = /etc/rabbitmq/definitions.json 
   override:
     statefulSet:

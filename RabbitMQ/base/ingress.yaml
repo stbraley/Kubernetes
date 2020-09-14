@@ -6,10 +6,10 @@ metadata:
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: rabbit.apps7-npr-cluster.nreca.org
+  - host: rabbit.dev.local
     http:
       paths:
       - path: /
         backend:
-          serviceName: rsp-rabbitmq-client
+          serviceName: rabbitmq-client
           servicePort: 15672
