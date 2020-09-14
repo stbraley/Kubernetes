@@ -65,7 +65,7 @@ Now that the VMware RabbitMQ Operator is running, we can use it to create a full
 Kubernetes is now downloading and creating the resources needed for your RabbitMQ Cluster. Verify that it is complete by running the following command and wait until you see 1/1 Running. CTRL + C will break out of the command.
 
 ```
-C:\dev\Kubernetes> while($(true){ clear; kubectl get pods -n rabbit; Start-Sleep -s 5;}
+C:\dev\Kubernetes> while$(true){ clear; kubectl get pods -n rabbit; Start-Sleep -s 5;}
 ```
 
 ## Post Deployment
